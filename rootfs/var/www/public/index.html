@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Flutter SDK Cache Server</title>
+</head>
+
+<body>
+    <h1>Flutter Cache Server</h1>
+    
+</body>
+<script>
+    fetch('http://localhost:9876/releases/releases_linux.json')
+        .then(res => res.json())
+        .then(data => {
+            console.log(data);
+        });
+</script>
+</html>

@@ -1,0 +1,12 @@
+services:
+  cache:
+    image: flutter-release-cache-server:dev
+    ports:
+      - 9876:80
+    volumes:
+      - type: volume
+        source: cache
+        target: /var/flutter
+
+volumes:
+  cache:
