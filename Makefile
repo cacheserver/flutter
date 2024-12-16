@@ -1,4 +1,5 @@
-it:
+it: build deploy
+build:
 	docker buildx bake --load dev
 deploy:
 	docker stack deploy -c docker-stack.yml flutter
