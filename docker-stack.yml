@@ -1,5 +1,5 @@
 services:
-  cache:
+  cache-server:
     image: flutter-release-cache-server:dev
     ports:
       - 9876:80
