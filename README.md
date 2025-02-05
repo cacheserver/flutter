@@ -1,5 +1,5 @@
 ## About
-A simple Flutter SDK cache server using nignx `proxy_cache` module.
+A simple Flutter SDK cache server using NGINX `proxy_cache` module.
 
 ## Usage
 
