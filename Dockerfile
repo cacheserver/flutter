@@ -1,3 +1,3 @@
 FROM nginx:stable-alpine
 ADD rootfs /
-VOLUME [ "/var/lib/flutter" ]
+VOLUME [ "/var/lib/flutter-release" ]

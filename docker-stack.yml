@@ -6,7 +6,7 @@ services:
     volumes:
       - type: volume
         source: cache
-        target: /var/lib/flutter
+        target: /var/lib/flutter-release
 
 volumes:
   cache:
