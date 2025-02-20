@@ -1,12 +1,18 @@
+# yaml-language-server: $schema=https://raw.githubusercontent.com/swarmlibs/dockerstack-schema/main/schema/dockerstack-spec.json
 services:
-  cache-server:
-    image: flutter-release-cache-server:dev
+  flutter:
+    image: chocolatefrappe/flutter-cache-server:dev
     ports:
-      - 9876:80
+      - 36081:80
     volumes:
       - type: volume
-        source: cache
-        target: /var/lib/flutter-release
-
+        source: data
+        target: /var/lib/flutter
+    stop_grace_period: 1m
+    deploy:
+      update_config:
+        order: start-first
+      rollback_config:
+        order: start-first
 volumes:
-  cache:
+  data:
