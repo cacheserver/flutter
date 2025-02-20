@@ -3,7 +3,7 @@ services:
   flutter:
     image: chocolatefrappe/flutter-cache-server:dev
     ports:
-      - 36081:80
+      - 36081:36081
     volumes:
       - type: volume
         source: data
