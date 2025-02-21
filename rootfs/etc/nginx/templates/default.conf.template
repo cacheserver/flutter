@@ -50,7 +50,7 @@ server {
         stub_status;
     }
 
-    location / {
+    location /releases/ {
         proxy_cache flutter;
 
         # Cache configuration
@@ -75,7 +75,7 @@ server {
         # Cache status
         add_header X-Cache-Status $upstream_cache_status;
         proxy_ignore_headers Expires Cache-Control Set-Cookie Vary;
-        # proxy_ignore_client_abort on;
+        proxy_ignore_client_abort on;
 
         # Buffering configuration
         proxy_buffering     on;
@@ -87,6 +87,11 @@ server {
         proxy_read_timeout    60s;
         proxy_send_timeout    60s;
 
+        proxy_pass https://storage.googleapis.com/flutter_infra_release/releases/;
+        proxy_set_header Host "storage.googleapis.com";
+    }
+
+    location / {
         proxy_pass https://storage.googleapis.com/flutter_infra_release/;
         proxy_set_header Host "storage.googleapis.com";
     }
