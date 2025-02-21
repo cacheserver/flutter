@@ -92,7 +92,7 @@ server {
     }
 
     location / {
-        proxy_pass https://storage.googleapis.com/flutter_infra_release/;
-        proxy_set_header Host "storage.googleapis.com";
+        root /var/www/html;
+        index index.html;
     }
 }

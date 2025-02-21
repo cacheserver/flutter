@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hugging Face CDN Cache Server</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 1rem;
+        }
+    </style>
+</head>
+
+<body>
+    <img src="logo.png" alt="Hugging Face Logo" style="display: block; width: 256px;">
+    <div style="padding-top: 1rem;">
+        <p>
+            This is a cache server for the <a href="https://docs.flutter.dev/release/archive">Flutter SDK archive</a>. It is designed to
+            be deployed in a private network to cache Flutter SDK releases to reduce the load on the public servers and
+            speed up the download process.
+        </p>
+        <p>
+            For more information, see the GitHub repository:
+            <a href="https://github.com/chocolatefrappe/flutter-cache-server" target="_blank" rel="noopener noreferrer">
+                https://github.com/chocolatefrappe/flutter-cache-server
+            </a>
+        </p>
+    </div>
+    <div>
+        <details>
+            <summary>Windows</summary>
+            <p>Click on the links below to download the releases:</p>
+            <ul id="releases-windows"></ul>
+        </details>
+        <details>
+            <summary>macOS</summary>
+            <p>Click on the links below to download the releases:</p>
+            <ul id="releases-macos"></ul>
+        </details>
+        <details>
+            <summary>Linux</summary>
+            <p>Click on the links below to download the releases:</p>
+            <ul id="releases-linux"></ul>
+        </details>
+    </div>
+</body>
+<script>
+    const supportedPlatforms = ['windows', 'macos', 'linux'];
+    for (const platform of supportedPlatforms) {
+        const listElm = document.getElementById(`releases-${platform}`);
+        try {
+            fetch(`/releases/releases_${platform}.json`)
+                .then(res => res.json())
+                .then(data => {
+                    for (release of data.releases) {
+                        const li = document.createElement('li');
+                        const a = document.createElement('a');
+                        a.href = "/releases/" + release.archive;
+                        a.textContent = "/releases/" + release.archive;
+                        li.appendChild(a);
+                        listElm.appendChild(li);
+                    }
+                });
+        } catch {}
+    }
+</script>
+</html>
