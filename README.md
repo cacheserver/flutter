@@ -1,15 +1,32 @@
 ## About
-A simple Flutter SDK cache server using NGINX `proxy_cache` module.
+This is a cache server for the Flutter SDK archive. It is designed to be deployed in a private network to cache Flutter SDK releases to reduce the load on the public servers and speed up the download process.
 
 ## Usage
 
-Replace `https://storage.googleapis.com/flutter_infra_release/releases/` with the server release url `http://localhost:8080/releases/`.
+The cache server listens on port `36081` by default. You can change the port by setting the `PORT` environment variable.
 
-Example:
+To run the cache server, you can use the following command:
+```bash
+docker run -p 36081:36081 -v /path/to/cache:/var/lib/flutter -d chocolatefrappe/flutter-cache-server:main
+```
 
-- Replace `https://storage.googleapis.com/flutter_infra_release/releases/stable/linux/flutter_linux_3.27.0-stable.tar.xz`
-- With `http://localhost:8080/releases/stable/linux/flutter_linux_3.27.0-stable.tar.xz`
+or via Docker Compose:
 
-## References
-https://docs.nginx.com/nginx/admin-guide/content-cache/content-caching/
-https://www.apalrd.net/posts/2024/cluster_debcache/
+```yaml
+services:
+  flutter-cache-server:
+    image: chocolatefrappe/flutter-cache-server:main
+    ports:
+      - mode: ingress
+        target: 36081
+        published: 36081
+        protocol: tcp
+    volumes:
+      - type: volume
+        source: flutter-cache
+        target: /var/lib/flutter
+    stop_grace_period: 1m
+    restart: always
+volumes:
+  flutter-cache:
+```
