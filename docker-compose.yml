@@ -1,21 +1,16 @@
-# yaml-language-server: $schema=https://raw.githubusercontent.com/swarmlibs/dockerstack-schema/main/schema/dockerstack-spec.json
 services:
   flutter-cache-server:
     image: chocolatefrappe/flutter-cache-server:dev
     ports:
       - mode: ingress
-        target: 36081
-        published: 36081
+        target: 36080
+        published: 36080
         protocol: tcp
     volumes:
       - type: volume
         source: flutter-cache
         target: /var/lib/flutter
     stop_grace_period: 5m
-    deploy:
-      update_config:
-        order: start-first
-      rollback_config:
-        order: start-first
+    restart: always
 volumes:
   flutter-cache:
