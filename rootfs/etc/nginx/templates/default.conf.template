@@ -30,7 +30,7 @@ map $request_uri $cache_bypass {
 
 # Flutter SDK Release Server
 server {
-    listen 36081;
+    listen ${PORT};
     server_name _;
 
     access_log /var/log/nginx/access.log cachelog;
