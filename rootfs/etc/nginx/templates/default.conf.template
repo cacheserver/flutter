@@ -82,9 +82,10 @@ server {
         proxy_buffer_size   256k;
         proxy_buffers       16 512k;
 
-        # Due to the size of the files, we need to increase the timeouts
-        proxy_read_timeout   1h;
-        proxy_send_timeout   1h;
+        # Adjust timeouts
+        proxy_connect_timeout 60s;
+        proxy_read_timeout    60s;
+        proxy_send_timeout    60s;
 
         proxy_pass https://storage.googleapis.com/flutter_infra_release/;
         proxy_set_header Host "storage.googleapis.com";
