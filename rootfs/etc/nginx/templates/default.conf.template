@@ -89,6 +89,7 @@ server {
 
         proxy_pass https://storage.googleapis.com/flutter_infra_release/releases/;
         proxy_set_header Host "storage.googleapis.com";
+        proxy_hide_header "Alt-Svc";
     }
 
     location / {
