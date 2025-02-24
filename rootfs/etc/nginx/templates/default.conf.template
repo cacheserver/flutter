@@ -55,8 +55,8 @@ server {
 
         # Cache configuration
         slice 1m;
-        proxy_cache_key $http_host$uri$slice_range;
-        add_header X-Cache-Key $http_host$uri$slice_range;
+        proxy_cache_key storage.googleapis.com/flutter_infra_release$uri$slice_range;
+        add_header X-Cache-Key storage.googleapis.com/flutter_infra_release$uri$slice_range;
         proxy_cache_methods GET;
         proxy_cache_valid 200 206 365d;
         proxy_cache_valid 301 302 0;
