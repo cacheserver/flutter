@@ -3,8 +3,8 @@ services:
     image: chocolatefrappe/flutter-cache-server:dev
     ports:
       - mode: ingress
-        target: 36080
-        published: 36080
+        target: 36081
+        published: 36081
         protocol: tcp
     volumes:
       - type: volume
