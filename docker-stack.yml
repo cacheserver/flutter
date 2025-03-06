@@ -11,6 +11,8 @@ services:
       - type: volume
         source: flutter-cache
         target: /var/lib/flutter
+      - type: tmpfs
+        target: /var/cache/nginx
     # stop_grace_period: 5m
     deploy:
       update_config:
