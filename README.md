@@ -7,7 +7,7 @@ The cache server listens on port `36081` by default. You can change the port by 
 
 To run the cache server, you can use the following command:
 ```bash
-docker run -p 36081:36081 -v /path/to/cache:/var/cache/flutter -d chocolatefrappe/flutter-cache-server:main
+docker run -p 36081:36081 -v /path/to/cache:/var/cache/flutter -d chocolatefrappe/flutter-cacheserver:main
 ```
 
 or via Docker Compose:
@@ -15,7 +15,7 @@ or via Docker Compose:
 ```yaml
 services:
   flutter-cache-server:
-    image: chocolatefrappe/flutter-cache-server:main
+    image: chocolatefrappe/flutter-cacheserver:main
     ports:
       - mode: ingress
         target: 36081
