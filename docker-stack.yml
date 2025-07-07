@@ -6,7 +6,7 @@ services:
       - 36081:36081
     volumes:
       - type: volume
-        source: flutter-cache
+        source: cache
         target: /var/cache/flutter
 volumes:
-  flutter-cache:
+  cache:
