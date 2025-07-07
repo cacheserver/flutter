@@ -8,5 +8,6 @@ services:
       - type: volume
         source: cache
         target: /var/cache/flutter
+    stop_grace_period: 5m
 volumes:
   cache:
