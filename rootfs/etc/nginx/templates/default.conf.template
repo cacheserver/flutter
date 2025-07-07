@@ -3,7 +3,7 @@ log_format cachelog '$time_local [request]: $remote_addr - $remote_user "$reques
 
 # Cache configuration
 proxy_cache_path /var/lib/flutter
-    keys_zone=flutter:100m
+    keys_zone=flutter:10m
     levels=2:2
     inactive=365d
     loader_files=64
