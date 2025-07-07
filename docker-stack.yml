@@ -3,21 +3,10 @@ services:
   cacheserver:
     image: chocolatefrappe/flutter-cache-server:dev
     ports:
-      - mode: ingress
-        target: 36081
-        published: 36081
-        protocol: tcp
+      - 36081:36081
     volumes:
       - type: volume
         source: flutter-cache
-        target: /var/lib/flutter
-      - type: tmpfs
-        target: /var/cache/nginx
-    # stop_grace_period: 5m
-    deploy:
-      update_config:
-        order: start-first
-      rollback_config:
-        order: start-first
+        target: /var/cache/flutter
 volumes:
   flutter-cache:
