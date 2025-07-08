@@ -1,9 +1,9 @@
 # yaml-language-server: $schema=https://raw.githubusercontent.com/swarmlibs/dockerstack-schema/main/schema/dockerstack-spec.json
 services:
   cacheserver:
-    image: chocolatefrappe/flutter-cacheserver:dev
+    image: ghcr.io/cacheserver/flutter:dev
     ports:
-      - 36081:36081
+      - 36081:80
     volumes:
       - type: volume
         source: cache

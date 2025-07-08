@@ -14,6 +14,6 @@ target "default" {
 
 target "dev" {
     tags = [
-        "chocolatefrappe/flutter-cacheserver:dev"
+        "ghcr.io/cacheserver/flutter:dev"
     ]
 }
