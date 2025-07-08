@@ -13,8 +13,6 @@ proxy_cache_path /var/cache/flutter
 
 # URI paths to avoid cache
 # These paths will change to indicate new release contents
-# All other .deb files can be cached nearly indefinitely, as the
-# version number is coded into the file name.
 map $request_uri $cache_bypass {
     ~releases_linux.json 1;
     ~releases_macos.json 1;
